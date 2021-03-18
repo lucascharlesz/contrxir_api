@@ -7,6 +7,10 @@ defmodule ContrxirApiWeb.Router do
 
   scope "/api", ContrxirApiWeb do
     pipe_through :api
+
+    scope "/v1", V1, as: :v1 do
+      forward "/graphql", Absinthe.Plug, schema: ContrxirApiWeb.Schema
+    end
   end
 
   # Enables LiveDashboard only for development

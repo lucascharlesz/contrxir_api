@@ -20,7 +20,7 @@ defmodule ContrxirApi.MixProject do
   def application do
     [
       mod: {ContrxirApi.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
 
@@ -33,6 +33,8 @@ defmodule ContrxirApi.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:absinthe, "~> 1.6"},
+      {:absinthe_plug, "~> 1.5"},
       {:phoenix, "~> 1.5.8"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
