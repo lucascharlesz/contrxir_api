@@ -1,4 +1,4 @@
-defmodule ContrxirApi.Part do
+defmodule ContrxirApi.Repos.Part do
   use Ecto.Schema
   import Ecto.Changeset
 

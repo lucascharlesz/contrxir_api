@@ -5,7 +5,7 @@ config :contrxir_api, ContrxirApi.Repo,
   username: "postgres",
   password: "postgres",
   database: "contrxir_api_dev",
-  hostname: "localhost",
+  hostname: "postgres",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

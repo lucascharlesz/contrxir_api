@@ -1,0 +1,49 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
+        consistency: delegated
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - backend
+    logging:
+      driver: none
+
+  # redis:
+  #   image: redis:7.0-alpine
+  #   ports:
+  #     - "127.0.0.1:6379:6379"
+
+  contrxir:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # env_file:
+    #   - .docker.env
+    command: ["./init.sh"]
+    ports:
+      - target: 4000
+        published: 4000
+        protocol: tcp
+        mode: host
+    networks:
+      - backend
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:
+
+networks:
+  backend:
+    name: backend
