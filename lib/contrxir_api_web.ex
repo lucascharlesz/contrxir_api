@@ -21,7 +21,6 @@ defmodule ContrxirApiWeb do
     quote do
       use Phoenix.Controller, namespace: ContrxirApiWeb
 
-      import Plug.Conn
       import ContrxirApiWeb.Gettext
       alias ContrxirApiWeb.Router.Helpers, as: Routes
     end
@@ -46,7 +45,6 @@ defmodule ContrxirApiWeb do
     quote do
       use Phoenix.Router
 
-      import Plug.Conn
       import Phoenix.Controller
     end
   end

@@ -5,10 +5,10 @@ defmodule ContrxirApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", ContrxirApiWeb do
+  scope "/api" do
     pipe_through :api
 
-    scope "/v1", V1, as: :v1 do
+    scope "/v1", as: :v1 do
       forward "/graphql", Absinthe.Plug, schema: ContrxirApiWeb.Schema
     end
   end
