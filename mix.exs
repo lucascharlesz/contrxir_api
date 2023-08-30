@@ -10,7 +10,8 @@ defmodule ContrxirApi.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      deps_path: System.get_env("MIX_DEPS_PATH") || "./deps"
     ]
   end
 

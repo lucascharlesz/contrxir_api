@@ -3,18 +3,18 @@ defmodule ContrxirApiWeb.Schema.Resolvers.Part do
   import Ecto.Query, only: [from: 2]
 
   def list_parts(_parent, _args, _resolution) do
-    {:ok, Repo.all(Repos.Part)}
+    {:ok, Repo.all(Part)}
   end
 
   def find_part(_parent, %{id: id}, _resolution) do
-    case Repo.get(Repos.Part, id) do
+    case Repo.get(Part, id) do
       nil -> {:error, "Part ID #{id} not found!"}
       part -> {:ok, part}
     end
   end
 
   def create_part(_parent, params, _resolution) do
-    part_changeset = Repos.Part.changeset(%ContrxirApi.Repos.Part{}, params)
+    part_changeset = Part.changeset(%Part{}, params)
 
     case Repo.insert(part_changeset) do
       {:ok, part} -> { :ok, part }

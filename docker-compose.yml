@@ -28,14 +28,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # env_file:
-    #   - .docker.env
     command: ["./init.sh"]
     ports:
       - target: 4000
         published: 4000
         protocol: tcp
         mode: host
+    volumes:
+      - type: bind
+        source: .
+        target: /var/www/contrxir-api
+        consistency: delegated
+      - type: bind
+        source: ./deps
+        target: /deps
+        consistency: delegated
+      - deps-data:/deps
     networks:
       - backend
     depends_on:
@@ -43,6 +51,7 @@ services:
 
 volumes:
   postgres-data:
+  deps-data:
 
 networks:
   backend:

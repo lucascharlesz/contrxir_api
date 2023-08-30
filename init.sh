@@ -2,5 +2,4 @@
 
 set -e
 
-mix ecto.setup
-mix phx.server
+mix ecto.setup && mix phx.server
